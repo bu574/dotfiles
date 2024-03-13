@@ -53,7 +53,7 @@ output eDP-1 resolution 2256x1504 position 2256,0 scale 1
 #
 # Example configuration:
 #
-   input "2:7:SynPS/2_Synaptics_TouchPad" {
+   input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
        dwt enabled
        tap enabled
        natural_scroll disabled
@@ -169,6 +169,19 @@ output eDP-1 resolution 2256x1504 position 2256,0 scale 1
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+#
+# sway notification center swaync
+#
+exec swaync
+#toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+#
+# start gnome polkit auth agent to be able to run procs in apps that need sudo or root rights 
+#
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
+
 #
 # Scratchpad:
 #

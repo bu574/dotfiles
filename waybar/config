@@ -6,7 +6,7 @@
         "height": 30,
         "modules-left": ["sway/workspaces", "sway/mode", "battery#bat1", "battery#bat2", "disk", "memory", "cpu", "temperature", "pipewire", "backlight", "idle_inhibitor"],
         "modules-center": ["sway/window"],
-        "modules-right": ["network#vpn", "network#wifi", "network#ethernet", "network#disconnected", "custom/mail", "custom/weather", "clock", "custom/poweroff"],
+        "modules-right": ["network#vpn", "network#wifi", "network#ethernet", "network#disconnected", "bluetooth", custom/weather", "clock", "custom/poweroff"],
         "sway/window": {
             "format": "{} ",
             "on-click": "swaymsg kill"
