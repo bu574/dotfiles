@@ -114,13 +114,40 @@ return packer.startup(function(use)
     -- needs dev-util/ctags to be installed
     use ('preservim/tagbar') 
     
-    -- vscode like Buttom Error tagbar
+    -- vscode like Bottom Error tagbar
     use ('folke/trouble.nvim') 
 
     --display vertical indent lines
     use "lukas-reineke/indent-blankline.nvim"
 
+    use {
+        "nathom/filetype.nvim",
+        config = function()
+            require("filetype").setup {
+                overrides = {
+                    extensions = {
+                        tf = "terraform",
+                        tfvars = "terraform",
+                        tfstate = "json",
+                        yml = "yaml",
+                    },
+                },
+            }
+
+        end,
+    }
+
+    --git integration
+    use ('tpope/vim-fugitive')
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
+
+    --dependency of nvim-dap-ui
+    use ('nvim-neotest/nvim-nio')
+
+    --gruvbox theme
+    use ('ellisonleao/gruvbox.nvim')
+
 end)
