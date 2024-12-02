@@ -11,6 +11,8 @@ require('file-finder')
 require('statusbar')
 require('autopairs')
 require('tabstyle')
+require('pylsp')
+
 
 local options = {
     -- Sets the number on the left-hand side.

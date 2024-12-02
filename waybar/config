@@ -19,6 +19,7 @@
             }
         },
         "clock": {
+            "timezone": "Europe/Berlin",
             "interval": 1,
             "format": "<b>{:%H:%M:%S}</b>",
             "format-alt": "{:%Y-%m-%d}",

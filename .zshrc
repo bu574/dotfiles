@@ -107,6 +107,25 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+findf () {
+  [ $# -lt 1 ]  && {
+    echo "Error: seach term is missing!"
+     return
+  }
+
+  local carg=""
+
+  [ $# -eq 2 ]  &&  {
+    carg="-C$2"
+  }
+  unalias grep
+  local find=$(which find)
+  local grep=$(which grep)
+  local find_args1=( . -type f -exec )
+  local gargs=( -Hn --color )
+
+  ${find} ${find_args1} ${grep} ${carg} ${gargs} ${1} {} \;
+}
 
 function sshaccess(){ 
     local sshhost dc;
@@ -119,6 +138,21 @@ function sshaccess(){
     vault read -field data -format json secret/data/sre/awx/${dc}/${sshhost}/ | jq -r .ssh_key | tee /tmp/${sshhost}_ssh.key > /dev/null;
     chmod 600 /tmp/${sshhost}_ssh.key;
     ssh -l ionos -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /tmp/${sshhost}_ssh.key ${sshhost} $@
+}
+
+function scpaccess(){
+    local sshhost dc file dest;
+    file=${2};
+    dest=${3};
+    sshhost=${1};
+    shift;
+    dc="$(echo -n ${sshhost} | sed -r -e "s/.*\.([a-z0-9-]*)\.profitbricks\.net/\1/g")";
+    export VAULT_ADDR=https://vault.any.profitbricks.net;
+    passkeys="$(gopass ${USER}/passwords/ionos/ldap)";
+    export VAULT_TOKEN=$(vault login -method ldap -token-only username=$(gpw .user) password=$(gpw .pass));
+    vault read -field data -format json secret/data/sre/awx/${dc}/${sshhost}/ | jq -r .ssh_key | tee /tmp/${sshhost}_ssh.key > /dev/null;
+    chmod 600 /tmp/${sshhost}_ssh.key;
+    su -c 'scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /tmp/${sshhost}_ssh.key ionos@${sshhost}:${file} ${dest}'
 }
 
 function gpw () { 
