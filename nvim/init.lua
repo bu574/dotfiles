@@ -12,7 +12,13 @@ require('statusbar')
 require('autopairs')
 require('tabstyle')
 require('pylsp')
-
+require('bashls')
+require('ansiblels')
+require('luals')
+require('yamlls')
+require('terraformls')
+require('helmls')
+require('jsonls')
 
 local options = {
     -- Sets the number on the left-hand side.
