@@ -110,10 +110,10 @@ return packer.startup(function(use)
 
     -- tagbar to display tags of the current file 
     -- needs dev-util/ctags to be installed
-    use ('preservim/tagbar') 
-    
+    use ('preservim/tagbar')
+
     -- vscode like Bottom Error tagbar
-    use ('folke/trouble.nvim') 
+    use ('folke/trouble.nvim')
 
     --display vertical indent lines
     use "lukas-reineke/indent-blankline.nvim"
@@ -150,5 +150,8 @@ return packer.startup(function(use)
 
     --nvim linter 
     use 'mfussenegger/nvim-lint'
+
+    --vim-gitgutter
+    use 'airblade/vim-gitgutter'
 
 end)
