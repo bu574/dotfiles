@@ -134,7 +134,7 @@ function sshaccess(){
     dc="$(echo -n ${sshhost} | sed -r -e "s/.*\.([a-z0-9-]*)\.profitbricks\.net/\1/g")";
     export VAULT_ADDR=https://vault.any.profitbricks.net;
     passkeys="$(gopass ${USER}/passwords/ionos/ldap)";
-    export VAULT_TOKEN=$(vault login -method ldap -token-only username=$(gpw .user) password=$(gpw .pass));
+    export VAULT_TOKEN=$(vault login -method ldap -path uildap -token-only username=$(gpw .user) password=$(gpw .pass));
     vault read -field data -format json secret/data/sre/awx/${dc}/${sshhost}/ | jq -r .ssh_key | tee /tmp/${sshhost}_ssh.key > /dev/null;
     chmod 600 /tmp/${sshhost}_ssh.key;
     ssh -l ionos -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /tmp/${sshhost}_ssh.key ${sshhost} $@

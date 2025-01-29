@@ -154,4 +154,20 @@ return packer.startup(function(use)
     --vim-gitgutter
     use 'airblade/vim-gitgutter'
 
+    --github copilot integration
+    use {
+        'zbirenbaum/copilot.lua',
+        cmd = "Copilot",
+        event = "InsertEnter",
+        }
+
+    --copilot chat integration
+    use {
+        'CopilotC-Nvim/CopilotChat.nvim',
+        dependencies = {
+            {'zbirenbaum/copilot.lua'},
+            {'nvim-lua/plenary.nvim', branch = 'master'},
+        },
+        build = 'make-tiktoken', -- only on linux (and macos)
+    }
 end)

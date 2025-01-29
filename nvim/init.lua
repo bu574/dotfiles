@@ -22,6 +22,8 @@ require('jsonls')
 require('bashlint')
 require('pylint')
 require('yamllint')
+require('copilot')
+require('copilotchat')
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
