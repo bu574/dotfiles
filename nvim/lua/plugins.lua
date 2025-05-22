@@ -148,6 +148,9 @@ return packer.startup(function(use)
     --gruvbox theme
     use ('ellisonleao/gruvbox.nvim')
 
+    --catppuccin theme
+    use {'catppuccin/nvim', as = 'catppuccin'}
+
     --nvim linter 
     use 'mfussenegger/nvim-lint'
 

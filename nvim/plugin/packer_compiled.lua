@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/mfriedrich/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/home/mfriedrich/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/mfriedrich/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -128,7 +133,7 @@ _G.packer_plugins = {
     url = "https://github.com/Mofiqul/dracula.nvim"
   },
   ["filetype.nvim"] = {
-    config = { "\27LJ\2\n許1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\14overrides\1\0\1\14overrides\0\15extensions\1\0\1\15extensions\0\1\0\4\vtfvars\14terraform\byml\tyaml\atf\14terraform\ftfstate\tjson\nsetup\rfiletype\frequire\0" },
+    config = { "\27LJ\2\n許1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\14overrides\1\0\1\14overrides\0\15extensions\1\0\1\15extensions\0\1\0\4\byml\tyaml\atf\14terraform\ftfstate\tjson\vtfvars\14terraform\nsetup\rfiletype\frequire\0" },
     loaded = true,
     path = "/home/mfriedrich/.local/share/nvim/site/pack/packer/start/filetype.nvim",
     url = "https://github.com/nathom/filetype.nvim"
@@ -252,14 +257,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: filetype.nvim
+time([[Config for filetype.nvim]], true)
+try_loadstring("\27LJ\2\n許1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\14overrides\1\0\1\14overrides\0\15extensions\1\0\1\15extensions\0\1\0\4\byml\tyaml\atf\14terraform\ftfstate\tjson\vtfvars\14terraform\nsetup\rfiletype\frequire\0", "config", "filetype.nvim")
+time([[Config for filetype.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
--- Config for: filetype.nvim
-time([[Config for filetype.nvim]], true)
-try_loadstring("\27LJ\2\n許1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\14overrides\1\0\1\14overrides\0\15extensions\1\0\1\15extensions\0\1\0\4\vtfvars\14terraform\byml\tyaml\atf\14terraform\ftfstate\tjson\nsetup\rfiletype\frequire\0", "config", "filetype.nvim")
-time([[Config for filetype.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

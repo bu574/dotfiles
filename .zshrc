@@ -10,6 +10,8 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
+#ZSH_THEME="catppuccin"
+#CATPPUCCIN_FLAVOR="mocha"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -159,7 +161,8 @@ function gpw () {
     echo "${passkeys}" | yq e "${1}" -
 }
 
-eval `dircolors ~/.dir_colors/dircolors`
+#eval `dircolors ~/.dir_colors/dircolors`
+eval $(dircolors ~/.dircolors)
 eval "$(direnv hook zsh)"
 prompt_context() {}
 source <(kubectl completion zsh)
@@ -194,6 +197,30 @@ eval
                 export PYTHONIOENCODING=$TF_PYTHONIOENCODING;
                 test -n "$TF_CMD" && print -s $TF_CMD
             }
+
+#returns all resources in a namespace
+#usage: kga <namespace>
+function kga {
+    for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+        echo "Resource: " $i
+
+        if [ -z "$1" ]
+        then
+            kubectl get --ignore-not-found ${i}
+        else
+            kubectl -n ${i} get --ignore-not-found ${i}
+        fi
+    done
+}
+
 #keychain ~/.ssh/id_rsa
 #. ~/.keychain/${HOST}-sh
-#. ~/.keychain/${HOST}-sh-gpg        
+#. ~/.keychain/${HOST}-sh-gpg   
+
+# Ensure XDG_RUNTIME_DIR is set
+if test -z "${XDG_RUNTIME_DIR}"; then
+    export XDG_RUNTIME_DIR=$(/run/user/$(id -u)-runtime-dir.XXX)
+fi
+ 
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
